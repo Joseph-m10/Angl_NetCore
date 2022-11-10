@@ -1,0 +1,20 @@
+<form>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th><span>Grade</span><sb-sort-icon></sb-sort-icon></th>
+                <th><span>Offshore</span><sb-sort-icon></sb-sort-icon></th>
+                <th><span>Onsite</span><sb-sort-icon></sb-sort-icon></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let country of tableList$ | async; let i = index">
+                <th scope="row">{{ i+1 }}</th>
+                <td>{{country.Grade}}</td>
+                <td>{{country.Offcount}}</td>
+                <td>{{country.Oncount}}</td>
+            </tr>
+        </tbody>
+    </table>
+</form>

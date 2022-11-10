@@ -1,0 +1,51 @@
+
+<h6>Choose Action</h6>
+<select class="form-select" style="margin-right:15px;" aria-label="Default select example" (change)="selectchange($event)">
+    <option selected value="0">--Select the Template--</option>
+    <option value="1">FC Report</option>
+</select>
+<button class="btn-primary" id="downlloadBTN" style="cursor:pointer;" (click)="btnnclick()">Download Template</button>
+
+<br />
+<br />
+<br />
+<br />
+
+
+<h6>Select Date</h6>
+<input type="date" id="datefield" min="01-01-2022" [(ngModel)]="dateUpload">
+
+
+<br />
+<br />
+<br />
+<br />
+
+<h6>Upload File</h6>
+<div class="row no-gutters">
+    <div class="col-md-4 component-container">
+        <div class="upload-WithProgress" id="up">
+            <input type="file" class="chooseFileBtn" (change)="fileChange($event,chooseFileBtn.files)" #chooseFileBtn />
+            <div class="chooseFile-wrapper">
+                <div class="chooseFile clearBoth" (click)="openFile($event)">
+                    <span class="gannett-icon upload-icon float-left"></span>
+                    <p class="float-left chooseFilesAndSize">
+                        <span class="choosen-file">{{fileNameHolder}}</span>
+                        <span class="lblSize">{{fileSize}}</span>
+                    </p>
+                    <span class="float-right upload-cancel" (click)="cancelUpload($event)"><span class="gannett-icon close-icon"></span></span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" #progressbar>
+                        <span class="sr-only">70% Complete</span>
+                    </div>
+                </div>
+            </div>
+            <p class="progress-status" *ngIf="showstatus" #progress_status>{{ result$ | async }}</p>
+            <p class="invalid-status" *ngIf="!showstatus">Invalid template! Please choose valid template.</p>
+            <!--<p class="progress-status" *ngIf="showstatus">
+                
+            </p>-->
+        </div>
+    </div>
+</div>
